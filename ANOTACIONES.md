@@ -39,7 +39,7 @@ luego se crea una funcion para el inicio del juego "startGame" donde *`window`*.
 este de load es para que lo cargue y podamos esperar a que comience hasta que se haya cargado el HTML.
 
 `.fillRect(x,y,width,height)`
-el metodo fillRect puede recibir solo 4 argumentos X,Y,W,H 
+el metodo fillRect puede recibir solo 4 argumentos X,Y,W,H   
 
 `.clearRect()`
 borra las posiciones del canva .clearRect(x:number, y:number, w:number, h:number) habra que revisar más argumentos
@@ -50,4 +50,19 @@ recibe parametros argumentos,(1:"",2:x,3:y) es importante donde se asignan los v
 reciben valores como atributos y no como parametros 
 
 ### clase 3
+en la variable ctx (que posee el contexto)
+se invoca una propiedad: 
+`.setAttribute('Width', window.innerWidth)`
+esta propiedad puede multiplicarse por algun porcentaje de la pantalla para ajustarlo a los pixeles tortales
+`window.innerHeight` `window.innerWidth`
 
+En la function se hace un condicional
+```JavaScript
+    if(window.innerHeigh> window.innerWidth){
+        canvasSize= window.innerWidth *0.8
+    }
+```
+bueno pues esta funcion lo que hace es verificar si lo alto es mayor a lo largo y si es asi lo reajusta aunque hay otras soluciones más 
+```JavaScript
+    let canvasSized = window.innerHeight > window.innerWidth ? window.innerWidth * 0.8 : window.innerHeight * 0.9
+```
