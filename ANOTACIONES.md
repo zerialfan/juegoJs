@@ -1,5 +1,6 @@
 # Anotaciones Videojuego 
 ### clase 2
+> en game.js
 primero traer el canvas con document.getelement
 luego crearle el ctx "Context"
 
@@ -15,5 +16,6 @@ el metodo fillRect puede recibir 4 argumentos o 7 o 9
 borra las posiciones del canva .clearRect(x:number, y:number, w:number, h:number) habra que revisar más argumentos
 
 `.fillText()`
-recibe parametros argumentos,(1:"",2:x,3:y)
-ctx.font y .fillStyle reciben valores como atributos y no como parametros 
+recibe parametros argumentos,(1:"",2:x,3:y) es importante donde se asignan los valores x & y de fillText ya que los demas metodos del contexto lo toman como referencia
+.font .fillStyle .textAling 
+reciben valores como atributos y no como parametros 
