@@ -66,3 +66,4 @@ bueno pues esta funcion lo que hace es verificar si lo alto es mayor a lo largo 
 ```JavaScript
     let canvasSized = window.innerHeight > window.innerWidth ? window.innerWidth * 0.8 : window.innerHeight * 0.9
 ```
+comente el codigo para poder repetirlo todo.
