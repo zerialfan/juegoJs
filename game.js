@@ -19,5 +19,7 @@ function reSize() {
 }
 
 function startGame() {
+    let elementSize = reSize()
+    ctx.font = 'px'
     ctx.fillText(emojis['X'],50,50)    
 }

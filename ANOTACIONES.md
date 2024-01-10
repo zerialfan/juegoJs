@@ -28,7 +28,6 @@ debe llevar ese orden para que quede más limpio. El curso pide que css no se ve
 commit clase 1
 
 ### clase 2
-### clase 2
 > en game.js
 primero traer el canvas con document.getelement
 luego crearle el ctx "Context"
