@@ -19,18 +19,17 @@ function reSize() {
 function startGame() {
     const canvasSize = reSize()
     
-    const elementSize = Math.floor(canvasSize /10) 
-    const spacing = Math.floor(elementSize*.1) 
+    const elementSize = Math.floor((canvasSize /10)) 
     
-    // let diseñoMapa = maps[0]
+    const diseñoMapa = maps[0]
+    const position = diseñoMapa.trim().split('\n').map(row=> row.trim().split(''))
 
-    for (let i = 1;  i< 10; i++) {
-        for (let j = 0; j < 10; j++) {
-            let x = j*elementSize -spacing
-            let y = i* elementSize+ i*spacing
+    for (let row = 1;  row<= 10; row++) {
+        for (let col = 0; col < 10; col++) {
+            let x = col*elementSize 
+            let y = row* elementSize
             cxt.font = elementSize + 'px Arial'
-            cxt.fillText(emojis['X'],x,y)
+            cxt.fillText(emojis[position[row-1][col]],x,y)
         }
     }
-    console.log({ canvasSize, elementSize }) 
 }
