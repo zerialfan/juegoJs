@@ -1,25 +1,36 @@
-// Primero hay que llamar al canva y al contexto 
 const canvas = document.getElementById('game')
-const ctx = canvas.getContext('2d')
+const cxt = canvas.getContext("2d")
 
-// Creamos los manejadores de las funciones load y resize
-window.addEventListener('load', handlerChanges)
-window.addEventListener('resize',handlerChanges)
+// Le agrego un eventlistner a window load
 
-function handlerChanges() {
-    startGame()
+window.addEventListener('resize',handleResize)
+window.addEventListener('load',handleResize)
+
+function handleResize() {
     reSize()
+    startGame()
 }
 function reSize() {
-    let canvasSize = window.innerWidth > window.innerHeight ?
-    window.innerHeight * 0.7 : window.innerWidth * 0.9
-
-    canvas.width = canvasSize
-    canvas.height = canvasSize
+    const isVertical =window.innerHeight > window.innerWidth  
+    let newSize= isVertical ? window.Math.ceil(innerWidth * 0.9) : Math.floor(window.innerHeight*0.7)
+    let canvasSize = canvas.width = canvas.height = newSize
+    return canvasSize
 }
-
 function startGame() {
-    let elementSize = reSize()
-    ctx.font = 'px'
-    ctx.fillText(emojis['X'],50,50)    
+    const canvasSize = reSize()
+    
+    const elementSize = Math.floor(canvasSize /10) 
+    const spacing = Math.floor(elementSize*.1) 
+    
+    // let diseñoMapa = maps[0]
+
+    for (let i = 1;  i< 10; i++) {
+        for (let j = 0; j < 10; j++) {
+            let x = j*elementSize -spacing
+            let y = i* elementSize+ i*spacing
+            cxt.font = elementSize + 'px Arial'
+            cxt.fillText(emojis['X'],x,y)
+        }
+    }
+    console.log({ canvasSize, elementSize }) 
 }
