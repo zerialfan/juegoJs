@@ -12,7 +12,7 @@ function handleResize() {
 }
 function reSize() {
     const isVertical =window.innerHeight > window.innerWidth  
-    let newSize= isVertical ? window.Math.ceil(innerWidth * 0.9) : Math.floor(window.innerHeight*0.9)
+    let newSize= isVertical ? window.Math.ceil(innerWidth * 0.9) : Math.floor(window.innerHeight*0.7)
     let canvasSize = canvas.width = canvas.height = newSize
     return canvasSize
 }
