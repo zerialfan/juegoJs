@@ -1,5 +1,11 @@
 const canvas = document.getElementById('game')
-const cxt = canvas.getContext("2d")
+const ctx = canvas.getContext("2d")
+// los botones ejecutalbles 'keydowns'
+const up = document.getElementById('up')
+const down = document.getElementById('down')
+const right = document.getElementById('right')
+const left = document.getElementById('left')
+
 
 // Le agrego un eventlistner a window load
 
@@ -23,13 +29,24 @@ function startGame() {
     
     const diseñoMapa = maps[0]
     const position = diseñoMapa.trim().split('\n').map(row=> row.trim().split(''))
-
-    for (let row = 1;  row<= 10; row++) {
-        for (let col = 0; col < 10; col++) {
-            let x = col*elementSize 
-            let y = row* elementSize
-            cxt.font = elementSize + 'px Arial'
-            cxt.fillText(emojis[position[row-1][col]],x,y)
-        }
-    }
+    ctx.font = elementSize + 'px Arial'
+    ctx.textAlign = 'right'
+    
+// Aqui se refactoriza el ciclo for para implementar un forEach que sea más sencillo de leer
+position.forEach((row , rowIndex) => {
+    row.forEach((col,colIndex) => {
+        let y = elementSize * (rowIndex+1)
+        let x = elementSize * (colIndex+1) 
+        const render = emojis[col]
+        ctx.fillText(render,x,y)
+    });
+    
+});
+    // for (let row = 1;  row<= 10; row++) {
+    //     for (let col = 0; col < 10; col++) {
+    //         let x = col*elementSize 
+    //         let y = row* elementSize
+    //         ctx.fillText(emojis[position[row-1][col]],x,y)
+    //     }
+    // }
 }
