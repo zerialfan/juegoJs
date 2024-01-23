@@ -1,5 +1,21 @@
 const canvas = document.getElementById('game')
 const ctx = canvas.getContext("2d")
+const handUp = document.getElementById('up')
+const handRight = document.getElementById('right')
+const handDown = document.getElementById('down')
+const handLeft = document.getElementById('left')
+
+let elementSize
+let canvasSize
+
+const setPosition ={
+    x: undefined,
+    y: undefined,
+}
+handUp.addEventListener('click',moveUp)
+handRight.addEventListener('click',moveRight)
+handDown.addEventListener('click',moveDown)
+moveLeft.addEventListener('click',moveLeft)
 // los botones ejecutalbles 'keydowns'
 const up = document.getElementById('up')
 const down = document.getElementById('down')
@@ -8,7 +24,6 @@ const left = document.getElementById('left')
 
 
 // Le agrego un eventlistner a window load
-
 window.addEventListener('resize',handleResize)
 window.addEventListener('load',handleResize)
 
@@ -16,16 +31,18 @@ function handleResize() {
     reSize()
     startGame()
 }
+
 function reSize() {
     const isVertical =window.innerHeight > window.innerWidth  
     let newSize= isVertical ? window.Math.ceil(innerWidth * 0.9) : Math.floor(window.innerHeight*0.7)
-    let canvasSize = canvas.width = canvas.height = newSize
+    canvasSize = canvas.width = canvas.height = newSize
     return canvasSize
 }
+
 function startGame() {
     const canvasSize = reSize()
     
-    const elementSize = Math.floor((canvasSize /10)) 
+    elementSize = Math.floor((canvasSize /10)) 
     
     const diseñoMapa = maps[0]
     const position = diseñoMapa.trim().split('\n').map(row=> row.trim().split(''))
@@ -49,4 +66,17 @@ position.forEach((row , rowIndex) => {
     //         ctx.fillText(emojis[position[row-1][col]],x,y)
     //     }
     // }
+}
+
+function moveUp() {
+    console.log('se mueve arriba');
+}
+function moveDown() {
+    console.log('se mueve abajo');
+}
+function moveLeft() {
+    console.log('se mueve izquierda');
+}
+function moveRight() {
+    console.log('se mueve derecha');
 }
