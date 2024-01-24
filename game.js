@@ -12,10 +12,11 @@ const setPosition ={
     x: undefined,
     y: undefined,
 }
+
 handUp.addEventListener('click',moveUp)
 handRight.addEventListener('click',moveRight)
 handDown.addEventListener('click',moveDown)
-moveLeft.addEventListener('click',moveLeft)
+handLeft.addEventListener('click',moveLeft)
 // los botones ejecutalbles 'keydowns'
 const up = document.getElementById('up')
 const down = document.getElementById('down')
@@ -41,7 +42,7 @@ function reSize() {
 
 function startGame() {
     const canvasSize = reSize()
-    
+    ctx.clearRect(0,0,canvasSize,canvasSize)
     elementSize = Math.floor((canvasSize /10)) 
     
     const diseñoMapa = maps[0]
@@ -55,28 +56,35 @@ position.forEach((row , rowIndex) => {
         let y = elementSize * (rowIndex+1)
         let x = elementSize * (colIndex+1) 
         const render = emojis[col]
+        if (col == 'O') {
+            if (!setPosition.x && !setPosition.y) {
+                setPosition.x = x
+                setPosition.y = y
+                console.log({setPosition});
+            }
+        }
         ctx.fillText(render,x,y)
     });
-    
 });
-    // for (let row = 1;  row<= 10; row++) {
-    //     for (let col = 0; col < 10; col++) {
-    //         let x = col*elementSize 
-    //         let y = row* elementSize
-    //         ctx.fillText(emojis[position[row-1][col]],x,y)
-    //     }
-    // }
+movePlayer()
+}
+function movePlayer() {
+    ctx.fillText(emojis['PLAYER'],setPosition.x,setPosition.y)
 }
 
 function moveUp() {
-    console.log('se mueve arriba');
+    setPosition.y -= elementSize
+    startGame()
 }
 function moveDown() {
-    console.log('se mueve abajo');
+    setPosition.y += elementSize
+    startGame()
 }
 function moveLeft() {
-    console.log('se mueve izquierda');
+    setPosition.x -= elementSize
+    startGame()
 }
 function moveRight() {
-    console.log('se mueve derecha');
+    setPosition.x += elementSize
+    startGame()
 }
